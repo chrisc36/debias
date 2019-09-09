@@ -34,7 +34,7 @@ def download_fasttext():
 
 
 def download_glove_6b():
-  if all(exists(join(config.WORD_VEC_SOURCE, x)) for x in GLOVE_6B_VECS):
+  if all(exists(join(config.WORD_VEC_SOURCE, x + ".txt")) for x in GLOVE_6B_VECS):
     return
   py_utils.download_zip("Glove 6B", GLOVE_6B_URL, config.WORD_VEC_SOURCE)
 

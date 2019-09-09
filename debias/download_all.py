@@ -1,3 +1,5 @@
+import logging
+
 from debias.datasets import squad, mnli, triviaqa_cp
 from debias.utils import py_utils, load_word_vectors
 
@@ -5,10 +7,10 @@ from debias.utils import py_utils, load_word_vectors
 def download_squad():
   squad.load_bias("train")
 
-  for dataset in ["train", "dev", "add_sent", "add_sent_one"]:
+  for dataset in ["train", "dev", "add_sent", "add_one_sent"]:
     squad.load_annotated_squad(dataset)
 
-  for dataset in ["dev", "add_sent", "add_sent_one"]:
+  for dataset in ["dev", "add_sent", "add_one_sent"]:
     squad.load_squad_documents(dataset)
 
 
@@ -34,9 +36,15 @@ def download_wordvecs():
 
 def main():
   py_utils.add_stdout_logger()
+  logging.info("Checking word vectors..")
   download_wordvecs()
+  logging.info("Checking MNLI...")
   download_mnli()
+  logging.info("Checking SQUAD...")
   download_squad()
+  logging.info("Checking TriviaQA-CP...")
+  download_triviaqa_cp()
+  logging.info("Done! All data should be ready")
 
 
 if __name__ == '__main__':
