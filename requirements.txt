@@ -1,0 +1,4 @@
+nltk>=3.0
+regex>=2018
+requests>=2
+tqdm>=4
