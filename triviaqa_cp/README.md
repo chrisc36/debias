@@ -27,7 +27,7 @@ json file contains a list of questions (in the "Data" field), with the following
     "QuestionType": str, The question type, either "person", "location" or "other"
     "QuestionTypeProbs": list, Question type probabilities, list containing the 
                          other probabilities is other, person, location as judged by
-                         out classifier
+                         our classifier
     "Document": dict, Meta-data about the document the passage is from, this is either 
                 an 'EntityPage' or 'SearchResult' object from the TriviaQA question
     "CharStart": int, Character start offset of the passage in the document 
@@ -46,7 +46,7 @@ To construct the actual datasets, these questions need to be selectively filtere
 - TriviaQA Person Test: load the dev data and select only person questions
 
  
-load_dataset.py contains code to do the filtering.
+triviaqa_cp_loader.py contains code to do the filtering.
 
 Note that a very small number of questions (about 1.5%) of questions were filtered from TriviaQA
 because we could not find any context passage that contains an answer (we used a slightly more 

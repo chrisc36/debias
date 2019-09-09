@@ -27,8 +27,9 @@ def get_qtypes(dataset_name, part):
 def load_triviaqa_cp(filename, dataset_name, part, expected_version=None):
   """Load a TriviaQA-CP dataset
 
-  :param filename: The TriviaQA-CP train or dev json file, depending on `part`
-  :param dataset_name: target dataset, must be in ["person", "location"]
+  :param filename: The TriviaQA-CP train or dev json file, must be the train file if
+                   if `part`=="train" and the dev file otherwise
+  :param dataset_name: dataset to load, must be in ["person", "location"]
   :param part: which part, must be in ["test", "dev", "train"[
   :param expected_version: Optional version to require the data to match
   :return: List of question in dictionary form
