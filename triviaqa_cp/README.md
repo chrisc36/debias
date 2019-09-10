@@ -9,7 +9,7 @@ a context paragraph was pre-selected for each question.
 Then location dataset was constructed by using location questions in the TriviaQA dev set as a test set,
 and person/other questions in the TriviaQA train set as the train set.
 The person dataset is built in the same way for person questions. 
-See our the appendix of our [paper](TBD) for details.
+See our the appendix of our [paper](https://arxiv.org/abs/1909.03683) for details.
 
 ## Data
 First, download the [train](https://drive.google.com/open?id=1Qjfpyb-Y2cvwmiT7tsBQF_LqC-rWVskn) and [dev](https://drive.google.com/open?id=1mNt2GvXrra5EKmfHkQBMwpWuZAtiQ0am) TriviaQA questions 

@@ -1,5 +1,6 @@
 # Ensemble Based Debiasing
-This repo contains the code for our paper ["Don’t Take the Easy Way Out: Ensemble Based Methods for Avoiding Known Dataset Biases"](TDB).
+This repo contains the code for our paper 
+["Don’t Take the Easy Way Out: Ensemble Based Methods for Avoiding Known Dataset Biases"](https://arxiv.org/abs/1909.03683).
 In particular, it contains code to train various models that are debiased, meaning they are trained to 
 avoid using particular strategies that are known to work well on the training data, but do not generalize to
 out-of-domain of adversarial settings. 
