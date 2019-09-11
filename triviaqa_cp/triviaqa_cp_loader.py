@@ -44,7 +44,7 @@ def load_triviaqa_cp(filename, dataset_name, part, expected_version=None):
       raise ValueError("Expected version %s, but data was version %s" % (
         expected_version, data["Version"]))
 
-  if dataset_name == "train":
+  if part == "train":
     if data["Split"] != "Train":
       raise ValueError("Expected train file, but split is %s" % data["Split"])
   else:
