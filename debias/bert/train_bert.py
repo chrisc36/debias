@@ -52,7 +52,7 @@ NLI_LABELS = ["contradiction", "entailment", "neutral"]
 NLI_LABEL_MAP = {k: i for i, k in enumerate(NLI_LABELS)}
 
 
-TextPairExample = namedtuple("TextPairExample", ["id", "premise", "hypothesis", "label"])
+TextPairExample = namedtuple("TextPairExample", ["id", "hypothesis", "premise", "label"])
 
 
 def load_hans(n_samples=None) -> List[TextPairExample]:
@@ -659,9 +659,13 @@ def main():
 
     probs = np.concatenate(probs, 0)
     eval_loss = eval_loss / nb_eval_steps
-    preds = np.argmax(probs, axis=1)
+
     if name == "hans":
-      preds[preds == 2] = 0
+      probs[:, 0] += probs[:, 2]
+      probs = probs[:, :2]
+
+    preds = np.argmax(probs, axis=1)
+
     result = {"acc": simple_accuracy(preds, all_label_ids)}
     loss = tr_loss / nb_tr_steps if args.do_train else None
 
