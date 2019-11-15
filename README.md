@@ -106,7 +106,12 @@ The experiment scripts will download cached pre-processed data instead
 of re-building them to help ensure our main experiments are easy to reproduce,
 so they do NOT require completing these steps yourself.
 
-We will upload code to do this pre-processing when ready.
+The bias-only model for MNLI can be trained with 
+
+`python debias/preprocessing/build_mnli_bias_only.py /path/to/output/dir`
+
+The pre-processing for the QA dataset is complicated since we have to pipe everything 
+through CoreNLP, although if there is interest I can work on uploading those steps as well.
 
 ## Cite
 If you use this work, please cite:
