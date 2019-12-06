@@ -113,6 +113,30 @@ The bias-only model for MNLI can be trained with
 The pre-processing for the QA dataset is complicated since we have to pipe everything 
 through CoreNLP, although if there is interest I can work on uploading those steps as well.
 
+## Additional Results
+We present the results on HANS with the addition of max, min, and standard deviations for our 8 runs below.
+
+For Bert:
+
+|Debiasing Method|Mean|Std|Min|Max|
+|---|---|---|---|---|
+|None|62.40|2.35|57.97|65.98|
+|Reweight|69.19|3.54|62.53|74.52|
+|Bias Product|67.92|3.71|60.63|71.51|
+|Learned-Mixin|64.00|3.03|57.49|68.01|
+|Learned-Mixin +H|66.15|2.57|60.59|68.55|
+
+
+For the Recurrent Model:
+
+|Debiasing Method|Mean|Std|Min|Max|
+|---|---|---|---|---|
+|None|50.58|0.39|49.81|51.05|
+|Reweight|52.85|0.69|51.58|53.88|
+|Bias Product|53.69|1.07|52.02|55.63|
+|Learned-Mixin|51.65|0.58|50.60|52.25|
+|Learned-Mixin +H|53.35|1.04|51.97|54.82|
+
 ## Cite
 If you use this work, please cite:
 
