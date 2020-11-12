@@ -29,3 +29,7 @@ SQUAD_TFIDF_FILTERED_BIAS = join(SOURCE_DIR, "squad-tfidf-filtered-bias")
 SQUAD_TFIDF_BIAS = join(SOURCE_DIR, "squad-tfidf-bias")
 TRIVIAQA_CP_PERSON_FILTERED_BIAS = join(SOURCE_DIR, "triviaqa-cp-person-bias")
 TRIVIAQA_CP_LOCATION_FILTERED_BIAS = join(SOURCE_DIR, "triviaqa-cp-location-bias")
+
+# Files to cache SQuAD TF-IDF features
+SQUAD_TFIDF_FEATURES = join(SOURCE_DIR, "squad-tfidf-features")
+SQUAD_FILTERED_TFIDF_FEATURES = join(SOURCE_DIR, "squad-tfidf-features-pos-filtered")

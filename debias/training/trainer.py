@@ -167,7 +167,8 @@ class Trainer(Configured):
           train_op = tf.identity(loss)
 
     # **** build evaluation ops ****
-    self.evaluator.setup(eval_datasets, model)
+    if self.evaluator is not None:
+      self.evaluator.setup(eval_datasets, model)
 
     # Savers to record/log as we go
     if out is not None:

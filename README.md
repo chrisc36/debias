@@ -110,8 +110,27 @@ The bias-only model for MNLI can be trained with
 
 `python debias/preprocessing/build_mnli_bias_only.py /path/to/output/dir`
 
-The pre-processing for the QA dataset is complicated since we have to pipe everything 
-through CoreNLP, although if there is interest I can work on uploading those steps as well.
+The CoreNLP annotated data can by built by starting a [CoreNLP server](https://stanfordnlp.github.io/CoreNLP/corenlp-server.html#getting-started),
+(we used release 2018-10-05 v3.9.2). For example (run from inside the corenlp directory):
+
+`java -mx8g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000 -threads 8 -quiet`
+
+and then running
+
+`python debias/preprocessing/build_annotated_squad.py /path/to/source /path/to/output.pkl --port 9000`
+`python debias/preprocessing/build_annotated_triviaqa.py /path/to/source /path/to/output.pkl --port 9000`
+
+These scripts can be slow, but support multiprocessing with the `--n_processes` flag (in which case the CoreNLP server
+should be given multiple threads as well, as in the example).
+Note for unknown reasons I have had seen very minor discrepancies between the output of these scripts and our cached
+NER tags (overall about 0.5% of tokens). The POS tags and tokens match the cached data exactly. 
+I don't expect this to significantly alter results.
+
+The SQuAD bias-only model can be trained by:
+
+`python debias/preprocessing/train_squad_bias.py path/to/model_dir path/to/prediction/dir`
+
+I am still working on uploading the TriviaQA-CP bias-only model. 
 
 ## Additional Results
 We present the results on HANS with the addition of max, min, and standard deviations for our 8 runs below.
