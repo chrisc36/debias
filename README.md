@@ -82,7 +82,7 @@ Or to train a model on the TriviaQA-CP Location dataset with the Reweight method
 `python debias/experiments/train_debiased_triviaqa_cp.py --dataset location 
 --output_dir /path/to/output --mode reweight`
 
-See the command line options (e.i., `python debias/experiments/train_debiased_squad.py --help`)
+See the command line options (i.e., `python debias/experiments/train_debiased_squad.py --help`)
 for additional options. 
 
 Model are automatically evaluated after training, but can be re-evaluated using the evaluation scripts `debias/experiments/eval_*`
@@ -110,15 +110,17 @@ The bias-only model for MNLI can be trained with
 
 `python debias/preprocessing/build_mnli_bias_only.py /path/to/output/dir`
 
-The CoreNLP annotated data can by built by starting a [CoreNLP server](https://stanfordnlp.github.io/CoreNLP/corenlp-server.html#getting-started),
+The CoreNLP annotated data can be built by starting a [CoreNLP server](https://stanfordnlp.github.io/CoreNLP/corenlp-server.html#getting-started),
 (we used release 2018-10-05 v3.9.2). For example (run from inside the corenlp directory):
 
 `java -mx8g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000 -threads 8 -quiet`
 
-and then running
+and then running:
 
-`python debias/preprocessing/build_annotated_squad.py /path/to/source /path/to/output.pkl --port 9000`
-`python debias/preprocessing/build_annotated_triviaqa.py /path/to/source /path/to/output.pkl --port 9000`
+```
+python debias/preprocessing/build_annotated_squad.py /path/to/source /path/to/output.pkl --port 9000
+python debias/preprocessing/build_annotated_triviaqa.py /path/to/source /path/to/output.pkl --port 9000
+```
 
 These scripts can be slow, but support multiprocessing with the `--n_processes` flag (in which case the CoreNLP server
 should be given multiple threads as well, as in the example).
